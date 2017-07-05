@@ -12,20 +12,16 @@ namespace DocumentContructor
 {
     public partial class DocumentConstructor : Form
     {
-
+        public List<Label> Document;
 
         public DocumentConstructor()
         {
             InitializeComponent();
+            Document = new List<Label>();
             Line l = new Line();
             l.Location = new Point(30, 10);
             l.Size = new Size(150, 10);
             Controls.Add(l);
-            Console.WriteLine(Global.LineNumber);
-            Console.WriteLine(Global.LineNumber);
-            Console.WriteLine(Global.LineNumber);
-            Console.WriteLine(Global.LineNumber);
-            Console.WriteLine(Global.LineNumber);
         }
     }
 
