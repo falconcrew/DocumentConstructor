@@ -17,16 +17,24 @@ namespace DocumentContructor
         public DocumentConstructor()
         {
             InitializeComponent();
-            Document = new List<Label>();
+            PropertiesForm2 pf2 = new PropertiesForm2();
+            pf2.Show();
+            /*Document = new List<Label>();
             Line l = new Line();
             l.Location = new Point(30, 10);
             l.Size = new Size(150, 10);
             Controls.Add(l);
+            Document.Add(l);
+            Global.Init();
+            Global.DocumentConstructor = this;
+            PropertiesForm pf = Global.PropertiesForm;
+            pf.Show();*/
         }
     }
 
     public class Line : Label
     {
+        private List<Property> properties;
         public Line() : base()
         {
             BackColor = Color.Black;
@@ -34,10 +42,13 @@ namespace DocumentContructor
             MouseDown += new MouseEventHandler(ControlFunction.MouseDown);
             MouseUp += new MouseEventHandler(ControlFunction.MouseUp);
             MouseMove += new MouseEventHandler(ControlFunction.Move);
+            Click += new EventHandler(ControlFunction.Click);
             Name = "Line" + Global.LineNumber;
+            Properties = new List<Property>();
+            Properties.Add(new Property("Color", BackColor, "List"));
         }
 
-        Color Color
+        public Color Color
         {
             get
             {
@@ -49,7 +60,31 @@ namespace DocumentContructor
             }
         }
 
+        public List<Property> Properties
+        {
+            get
+            {
+                return properties;
+            }
+            set
+            {
+                properties = value;
+                UpdateProperties();
+            }
+        }
 
+        private void UpdateProperties()
+        {
+            foreach(Property p in properties)
+            {
+                switch (p.Name)
+                {
+                    case "Color":
+                        Color = (Color)p.Value;
+                        break;
+                }
+            }
+        }
     }
 
     public class ControlFunction
@@ -88,10 +123,33 @@ namespace DocumentContructor
                 }
             }
         }
+
+        public static void Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Click");
+            Global.PropertiesForm.Control = sender;
+        }
     }
 
     public class Global
     {
+        public static void Init()
+        {
+            PropertiesForm = new PropertiesForm();
+        }
+
+        public static PropertiesForm PropertiesForm
+        {
+            get;
+            private set;
+        }
+
+        public static DocumentConstructor DocumentConstructor
+        {
+            get;
+            set;
+        }
+
         private static int lineNumber;
         public static int LineNumber
         {
