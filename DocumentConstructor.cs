@@ -14,10 +14,11 @@ namespace DocumentContructor
 
         public DocumentConstructor()
         {
-            InitializeComponent();
             Global.Init();
-            PropertiesForm pf2 = new PropertiesForm();
-            pf2.Show();
+            InitializeComponent();
+            Global.PropertiesForm.Show();
+            //PropertiesForm pf = new PropertiesForm();
+            //pf.Show();
             /*Document = new List<Label>();
             Line l = new Line();
             l.Location = new Point(30, 10);

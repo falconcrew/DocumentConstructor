@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ImageComboBox">
+      <HintPath>References\ImageComboBox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -69,10 +73,16 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />
+    <Compile Include="SelectBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SelectColor.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TextInput.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TextLabel.cs">
+    <Compile Include="TextField.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Toolbox.cs">
@@ -96,6 +106,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SelectColor.resx">
+      <DependentUpon>SelectColor.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\Property.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -109,6 +122,149 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\AliceBlue.png" />
+    <EmbeddedResource Include="Images\AntiqueWhite.png" />
+    <EmbeddedResource Include="Images\Aqua.png" />
+    <EmbeddedResource Include="Images\Aquamarine.png" />
+    <EmbeddedResource Include="Images\Azure.png" />
+    <EmbeddedResource Include="Images\Beige.png" />
+    <EmbeddedResource Include="Images\Bisque.png" />
+    <EmbeddedResource Include="Images\Black.png" />
+    <EmbeddedResource Include="Images\BlanchedAlmond.png" />
+    <EmbeddedResource Include="Images\Blue.png" />
+    <EmbeddedResource Include="Images\BlueViolet.png" />
+    <EmbeddedResource Include="Images\Brown.png" />
+    <EmbeddedResource Include="Images\BurlyWood.png" />
+    <EmbeddedResource Include="Images\CadetBlue.png" />
+    <EmbeddedResource Include="Images\Chartreuse.png" />
+    <EmbeddedResource Include="Images\Chocolate.png" />
+    <EmbeddedResource Include="Images\Coral.png" />
+    <EmbeddedResource Include="Images\CornflowerBlue.png" />
+    <EmbeddedResource Include="Images\Cornsilk.png" />
+    <EmbeddedResource Include="Images\Crimson.png" />
+    <EmbeddedResource Include="Images\Cyan.png" />
+    <EmbeddedResource Include="Images\DarkBlue.png" />
+    <EmbeddedResource Include="Images\DarkCyan.png" />
+    <EmbeddedResource Include="Images\DarkGoldenrod.png" />
+    <EmbeddedResource Include="Images\DarkGray.png" />
+    <EmbeddedResource Include="Images\DarkGreen.png" />
+    <EmbeddedResource Include="Images\DarkKhaki.png" />
+    <EmbeddedResource Include="Images\DarkMagenta.png" />
+    <EmbeddedResource Include="Images\DarkOliveGreen.png" />
+    <EmbeddedResource Include="Images\DarkOrange.png" />
+    <EmbeddedResource Include="Images\DarkOrchid.png" />
+    <EmbeddedResource Include="Images\DarkRed.png" />
+    <EmbeddedResource Include="Images\DarkSalmon.png" />
+    <EmbeddedResource Include="Images\DarkSeaGreen.png" />
+    <EmbeddedResource Include="Images\DarkSlateBlue.png" />
+    <EmbeddedResource Include="Images\DarkSlateGray.png" />
+    <EmbeddedResource Include="Images\DarkTurquoise.png" />
+    <EmbeddedResource Include="Images\DarkViolet.png" />
+    <EmbeddedResource Include="Images\DeepPink.png" />
+    <EmbeddedResource Include="Images\DeepSkyBlue.png" />
+    <EmbeddedResource Include="Images\DimGray.png" />
+    <EmbeddedResource Include="Images\DodgerBlue.png" />
+    <EmbeddedResource Include="Images\Firebrick.png" />
+    <EmbeddedResource Include="Images\FloralWhite.png" />
+    <EmbeddedResource Include="Images\ForestGreen.png" />
+    <EmbeddedResource Include="Images\Fuchsia.png" />
+    <EmbeddedResource Include="Images\Gainsboro.png" />
+    <EmbeddedResource Include="Images\GhostWhite.png" />
+    <EmbeddedResource Include="Images\Gold.png" />
+    <EmbeddedResource Include="Images\Goldenrod.png" />
+    <EmbeddedResource Include="Images\Gray.png" />
+    <EmbeddedResource Include="Images\Green.png" />
+    <EmbeddedResource Include="Images\GreenYellow.png" />
+    <EmbeddedResource Include="Images\Honeydew.png" />
+    <EmbeddedResource Include="Images\HotPink.png" />
+    <EmbeddedResource Include="Images\IndianRed.png" />
+    <EmbeddedResource Include="Images\Indigo.png" />
+    <EmbeddedResource Include="Images\Ivory.png" />
+    <EmbeddedResource Include="Images\Khaki.png" />
+    <EmbeddedResource Include="Images\Lavender.png" />
+    <EmbeddedResource Include="Images\LavenderBlush.png" />
+    <EmbeddedResource Include="Images\LawnGreen.png" />
+    <EmbeddedResource Include="Images\LemonChiffon.png" />
+    <EmbeddedResource Include="Images\LightBlue.png" />
+    <EmbeddedResource Include="Images\LightCoral.png" />
+    <EmbeddedResource Include="Images\LightCyan.png" />
+    <EmbeddedResource Include="Images\LightGoldenrodYellow.png" />
+    <EmbeddedResource Include="Images\LightGray.png" />
+    <EmbeddedResource Include="Images\LightGreen.png" />
+    <EmbeddedResource Include="Images\LightPink.png" />
+    <EmbeddedResource Include="Images\LightSalmon.png" />
+    <EmbeddedResource Include="Images\LightSeaGreen.png" />
+    <EmbeddedResource Include="Images\LightSkyBlue.png" />
+    <EmbeddedResource Include="Images\LightSlateGray.png" />
+    <EmbeddedResource Include="Images\LightSteelBlue.png" />
+    <EmbeddedResource Include="Images\LightYellow.png" />
+    <EmbeddedResource Include="Images\Lime.png" />
+    <EmbeddedResource Include="Images\LimeGreen.png" />
+    <EmbeddedResource Include="Images\Linen.png" />
+    <EmbeddedResource Include="Images\Magenta.png" />
+    <EmbeddedResource Include="Images\Maroon.png" />
+    <EmbeddedResource Include="Images\MediumAquamarine.png" />
+    <EmbeddedResource Include="Images\MediumBlue.png" />
+    <EmbeddedResource Include="Images\MediumOrchid.png" />
+    <EmbeddedResource Include="Images\MediumPurple.png" />
+    <EmbeddedResource Include="Images\MediumSeaGreen.png" />
+    <EmbeddedResource Include="Images\MediumSlateBlue.png" />
+    <EmbeddedResource Include="Images\MediumSpringGreen.png" />
+    <EmbeddedResource Include="Images\MediumTurquoise.png" />
+    <EmbeddedResource Include="Images\MediumVioletRed.png" />
+    <EmbeddedResource Include="Images\MidnightBlue.png" />
+    <EmbeddedResource Include="Images\MintCream.png" />
+    <EmbeddedResource Include="Images\MistyRose.png" />
+    <EmbeddedResource Include="Images\Moccasin.png" />
+    <EmbeddedResource Include="Images\NavajoWhite.png" />
+    <EmbeddedResource Include="Images\Navy.png" />
+    <EmbeddedResource Include="Images\OldLace.png" />
+    <EmbeddedResource Include="Images\Olive.png" />
+    <EmbeddedResource Include="Images\OliveDrab.png" />
+    <EmbeddedResource Include="Images\Orange.png" />
+    <EmbeddedResource Include="Images\OrangeRed.png" />
+    <EmbeddedResource Include="Images\Orchid.png" />
+    <EmbeddedResource Include="Images\PaleGoldenrod.png" />
+    <EmbeddedResource Include="Images\PaleGreen.png" />
+    <EmbeddedResource Include="Images\PaleTurquoise.png" />
+    <EmbeddedResource Include="Images\PaleVioletRed.png" />
+    <EmbeddedResource Include="Images\PapayaWhip.png" />
+    <EmbeddedResource Include="Images\PeachPuff.png" />
+    <EmbeddedResource Include="Images\Peru.png" />
+    <EmbeddedResource Include="Images\Pink.png" />
+    <EmbeddedResource Include="Images\Plum.png" />
+    <EmbeddedResource Include="Images\PowderBlue.png" />
+    <EmbeddedResource Include="Images\Purple.png" />
+    <EmbeddedResource Include="Images\Red.png" />
+    <EmbeddedResource Include="Images\RosyBrown.png" />
+    <EmbeddedResource Include="Images\RoyalBlue.png" />
+    <EmbeddedResource Include="Images\SaddleBrown.png" />
+    <EmbeddedResource Include="Images\Salmon.png" />
+    <EmbeddedResource Include="Images\SandyBrown.png" />
+    <EmbeddedResource Include="Images\SeaGreen.png" />
+    <EmbeddedResource Include="Images\SeaShell.png" />
+    <EmbeddedResource Include="Images\Sienna.png" />
+    <EmbeddedResource Include="Images\Silver.png" />
+    <EmbeddedResource Include="Images\SkyBlue.png" />
+    <EmbeddedResource Include="Images\SlateBlue.png" />
+    <EmbeddedResource Include="Images\SlateGray.png" />
+    <EmbeddedResource Include="Images\Snow.png" />
+    <EmbeddedResource Include="Images\SpringGreen.png" />
+    <EmbeddedResource Include="Images\SteelBlue.png" />
+    <EmbeddedResource Include="Images\Tan.png" />
+    <EmbeddedResource Include="Images\Teal.png" />
+    <EmbeddedResource Include="Images\Thistle.png" />
+    <EmbeddedResource Include="Images\Tomato.png" />
+    <EmbeddedResource Include="Images\Transparent.png" />
+    <EmbeddedResource Include="Images\Turquoise.png" />
+    <EmbeddedResource Include="Images\Violet.png" />
+    <EmbeddedResource Include="Images\Wheat.png" />
+    <EmbeddedResource Include="Images\White.png" />
+    <EmbeddedResource Include="Images\WhiteSmoke.png" />
+    <EmbeddedResource Include="Images\Yellow.png" />
+    <EmbeddedResource Include="Images\YellowGreen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

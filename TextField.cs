@@ -1,23 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace DocumentContructor
 {
-    public class TextLabel : Label
+    public class TextField : Label
     {
         private List<Property> properties;
         private string text;
 
-        public TextLabel() : base()
+        public TextField() : base()
         {
             MouseDown += new MouseEventHandler(ControlFunction.MouseDown);
             MouseUp += new MouseEventHandler(ControlFunction.MouseUp);
             MouseMove += new MouseEventHandler(ControlFunction.Move);
             Click += new EventHandler(ControlFunction.Click);
             Properties = new List<Property>();
-            text = "";
-            Properties.Add(new Property("Text", typeof(string), typeof(TextBox)));
+            SetProperties();
+            Font = new Font("Times New Roman", 12);
+        }
+
+        private void SetProperties()
+        {
+            Properties.Add(new Property("Text", typeof(string), typeof(TextInput)));
+            Properties.Add(new Property("Font", typeof(string), typeof(SelectBox)));
+            Properties.Add(new Property("Fontsize", typeof(string), typeof(TextInput)));
         }
 
         public override string Text

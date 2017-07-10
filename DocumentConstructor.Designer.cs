@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textLabel1 = new DocumentContructor.TextLabel();
+            this.textLabel1 = new DocumentContructor.TextField();
             this.SuspendLayout();
             // 
             // textLabel1
@@ -55,7 +55,7 @@
 
         #endregion
 
-        private TextLabel textLabel1;
+        private TextField textLabel1;
     }
 }
 

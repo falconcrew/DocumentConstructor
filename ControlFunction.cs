@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace DocumentContructor
 {
@@ -33,11 +34,6 @@ namespace DocumentContructor
         {
             Console.WriteLine("Click");
             Global.PropertiesForm.Control = (Control)sender;
-        }
-
-        public static void ChangeValue(object sender, EventArgs e)
-        {
-            
         }
     }
 }

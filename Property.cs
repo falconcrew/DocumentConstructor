@@ -10,7 +10,16 @@ namespace DocumentContructor
             Name = name;
             Type = type;
             ControlType = controlType;
-            Control = new Label();
+            switch (controlType.Name)
+            {
+                case "TextInput":
+                    Control = new TextInput("Text");
+                    break;
+                case "SelectBox":
+                    Control = new SelectBox(name);
+                    break;
+            }
+            Label = new NameLabel(name);
         }
 
         public string Name
@@ -32,6 +41,12 @@ namespace DocumentContructor
         }
 
         public Control Control
+        {
+            get;
+            set;
+        }
+
+        public NameLabel Label
         {
             get;
             set;

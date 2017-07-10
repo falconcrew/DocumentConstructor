@@ -25,7 +25,7 @@ namespace DocumentContructor
                 control = value;
                 controlType = value.GetType().Name;
                 UpdateProperties();
-                Invalidate();
+                //Invalidate();
 
             }
         }
@@ -33,6 +33,7 @@ namespace DocumentContructor
         public PropertiesForm()
         {
             InitializeComponent();
+            tableLayoutPanel1.Controls.Add(new SelectColor(), 0, 0);
             //PropertyInfo[] pis = label1.GetType().GetProperties();
             /*Font f = (Font)pi.GetValue(label1);
             Console.WriteLine(f.FontFamily);
@@ -71,7 +72,7 @@ namespace DocumentContructor
         private void UpdateProperties()
         {
             Line line;
-            TextLabel text;
+            TextField text;
             tableLayoutPanel1.Controls.Clear();
             int row = 0;
             switch (controlType)
@@ -86,15 +87,12 @@ namespace DocumentContructor
                         row++;
                     }
                     break;
-                case "TextLabel":
-                    text = (TextLabel)Control;
+                case "TextField":
+                    text = (TextField)Control;
                     foreach (Property p in text.Properties)
                     {
-                        NameLabel label = new NameLabel(p.Name);
-                        tableLayoutPanel1.Controls.Add(label, 0, row);
+                        tableLayoutPanel1.Controls.Add(p.Label, 0, row);
                         tableLayoutPanel1.Controls.Add(p.Control, 1, row);
-                        tableLayoutPanel1.SetCellPosition(tableLayoutPanel1.Controls[1], new TableLayoutPanelCellPosition(1, row));
-                        Console.WriteLine(tableLayoutPanel1.Controls.Count);
                         row++;
                     }
                     break;

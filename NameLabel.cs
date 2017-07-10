@@ -9,6 +9,8 @@ namespace DocumentContructor
         {
             Font = new Font("Times New Roman", 10);
             Text = text;
+            TextAlign = ContentAlignment.MiddleLeft;
+            Dock = DockStyle.Fill;
         }
     }
 }
