@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.selectColor1 = new DocumentContructor.SelectColor();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +52,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.selectColor1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -82,17 +79,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 29);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // selectColor1
-            // 
-            this.selectColor1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.selectColor1.Indent = 0;
-            this.selectColor1.ItemHeight = 15;
-            this.selectColor1.Location = new System.Drawing.Point(4, 4);
-            this.selectColor1.Name = "selectColor1";
-            this.selectColor1.Size = new System.Drawing.Size(121, 21);
-            this.selectColor1.TabIndex = 2;
-            this.selectColor1.Text = "selectColor1";
-            // 
             // PropertiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -115,6 +101,5 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private SelectColor selectColor1;
     }
 }

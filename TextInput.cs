@@ -13,7 +13,12 @@ namespace DocumentContructor
             Dock = DockStyle.Fill;
             Margin = new Padding(0);
             BorderStyle = BorderStyle.None;
-            //TextChanged += new EventHandler(ControlFunction.ChangeValue);
+            Enter += new EventHandler(ChangeValue);
+        }
+
+        private void ChangeValue(object sender, EventArgs e)
+        {
+            
         }
     }
 }

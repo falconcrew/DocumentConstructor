@@ -10,7 +10,6 @@ namespace DocumentContructor
     {
         public static void Init()
         {
-            SetupAllColors();
             PropertiesForm = new PropertiesForm();
         }
 
@@ -32,25 +31,6 @@ namespace DocumentContructor
             get
             {
                 return lineNumber++;
-            }
-        }
-
-        public static List<string> ColorNames
-        {
-            get;
-            set;
-        }
-
-        private static void SetupAllColors()
-        {
-            ColorNames = new List<string>();
-            foreach (PropertyInfo property in typeof(Color).GetProperties())
-            {
-                if (property.PropertyType == typeof(Color))
-                {
-                    Color c = (Color)property.GetValue(null);
-                    ColorNames.Add(c.Name);
-                }
             }
         }
     }

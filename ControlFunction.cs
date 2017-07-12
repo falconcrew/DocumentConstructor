@@ -32,7 +32,6 @@ namespace DocumentContructor
 
         public static void Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Click");
             Global.PropertiesForm.Control = (Control)sender;
         }
     }

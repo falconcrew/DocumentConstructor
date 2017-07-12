@@ -31,12 +31,6 @@ namespace DocumentContructor
                         Items.Add(fam.Name);
                     }
                     break;
-                /*case "Color":
-                    foreach (Color c in Global.AllColors)
-                    {
-                        Items.Add(c.Name);
-                    }
-                    break;*/
             }
 
         }
@@ -50,8 +44,6 @@ namespace DocumentContructor
                     Global.PropertiesForm.Control.GetType().GetProperty(Property).SetValue(Global.PropertiesForm.Control, f);
                     break;
             }
-            //PropertyInfo pi = Global.PropertiesForm.Control.GetType().GetProperty(control.Property);
-            //Console.WriteLine(Global.PropertiesForm.Control.GetType().GetProperty(control.Property).GetValue(Global.PropertiesForm.Control));
         }
 
         public string Property

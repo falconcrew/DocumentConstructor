@@ -33,7 +33,6 @@ namespace DocumentContructor
         public PropertiesForm()
         {
             InitializeComponent();
-            tableLayoutPanel1.Controls.Add(new SelectColor(), 0, 0);
             //PropertyInfo[] pis = label1.GetType().GetProperties();
             /*Font f = (Font)pi.GetValue(label1);
             Console.WriteLine(f.FontFamily);

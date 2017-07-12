@@ -18,6 +18,9 @@ namespace DocumentContructor
                 case "SelectBox":
                     Control = new SelectBox(name);
                     break;
+                case "SelectColor":
+                    Control = new SelectColor("ForeColor");
+                    break;
             }
             Label = new NameLabel(name);
         }

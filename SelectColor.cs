@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ImageComboBox;
+using System.Reflection;
 
 namespace DocumentContructor
 {
@@ -14,14 +15,47 @@ namespace DocumentContructor
         private ImageList imageList1;
         private System.ComponentModel.IContainer components;
 
-        public SelectColor() : base()
+        public SelectColor(string property) : base()
         {
             InitializeComponent();
+            Property = property;
+            SetupColorList();
+            Dock = DockStyle.Fill;
+            Font = new Font("Times New Roman", 10);
+            Margin = new Padding(0);
+            AutoCompleteMode = AutoCompleteMode.Append;
+            AutoCompleteSource = AutoCompleteSource.ListItems;
+            FlatStyle = FlatStyle.Flat;
+            SelectedIndexChanged += new EventHandler(ChangeValue);
             ImageList = imageList1;
             for (int i = 0; i < ImageList.Images.Count; i++)
             {
                 ImageComboBoxItem item = new ImageComboBoxItem(i, ImageList.Images.Keys[i], 0);
                 Items.Add(item);
+            }
+        }
+
+        public string Property
+        {
+            get;
+            set;
+        }
+
+        private void ChangeValue(object sender, EventArgs e)
+        {
+            Global.PropertiesForm.Control.GetType().GetProperty(Property).SetValue(Global.PropertiesForm.Control, colors[SelectedIndex + 1]);
+        }
+
+        private List<Color> colors = new List<Color>();
+        private void SetupColorList()
+        {
+            PropertyInfo[] pis = typeof(Color).GetProperties();
+            foreach(PropertyInfo pi in pis)
+            {
+                if(pi.PropertyType == typeof(Color))
+                {
+                    colors.Add((Color)pi.GetValue(null));
+                }
             }
         }
 

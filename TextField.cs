@@ -27,6 +27,7 @@ namespace DocumentContructor
             Properties.Add(new Property("Text", typeof(string), typeof(TextInput)));
             Properties.Add(new Property("Font", typeof(string), typeof(SelectBox)));
             Properties.Add(new Property("Fontsize", typeof(string), typeof(TextInput)));
+            Properties.Add(new Property("ForeColor", typeof(string), typeof(SelectColor)));
         }
 
         public override string Text
