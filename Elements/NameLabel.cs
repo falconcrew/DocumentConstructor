@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace DocumentContructor
+namespace DocumentConstructor
 {
     public class NameLabel : Label
     {

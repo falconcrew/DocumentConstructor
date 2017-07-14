@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ImageComboBox;
 using System.Reflection;
+using DocumentConstructor.Properties;
 
-namespace DocumentContructor
+namespace DocumentConstructor
 {
     public class SelectColor : ImageComboBox.ImageComboBox
     {
         private ImageList imageList1;
         private System.ComponentModel.IContainer components;
 
-        public SelectColor(string property) : base()
+        public SelectColor() : base()
         {
             InitializeComponent();
-            Property = property;
-            SetupColorList();
             Dock = DockStyle.Fill;
             Font = new Font("Times New Roman", 10);
             Margin = new Padding(0);
@@ -28,35 +27,38 @@ namespace DocumentContructor
             FlatStyle = FlatStyle.Flat;
             SelectedIndexChanged += new EventHandler(ChangeValue);
             ImageList = imageList1;
-            for (int i = 0; i < ImageList.Images.Count; i++)
+            for (int i = 0; i < imageList1.Images.Count; i++)
             {
-                ImageComboBoxItem item = new ImageComboBoxItem(i, ImageList.Images.Keys[i], 0);
+                ImageComboBoxItem item = new ImageComboBoxItem(i, imageList1.Images.Keys[i], 0);
+                if (!imageList1.Images.Keys[i].Equals(ControlFunction.Colors[i].Name))
+                {
+                    Console.WriteLine(imageList1.Images.Keys[i] + "        " + ControlFunction.Colors[i].Name);
+                }
                 Items.Add(item);
             }
         }
-
+        
+        public SelectColor(string property) : this()
+        {
+            Property = property;
+        }
+        
         public string Property
         {
             get;
             set;
         }
+        
+        public void SetText()
+        {
+            Color c = (Color)Global.PropertiesForm.Control.GetType().GetProperty(Property).GetValue(Global.PropertiesForm.Control);
+            Text = c.Name;
+        }
 
         private void ChangeValue(object sender, EventArgs e)
         {
-            Global.PropertiesForm.Control.GetType().GetProperty(Property).SetValue(Global.PropertiesForm.Control, colors[SelectedIndex + 1]);
-        }
-
-        private List<Color> colors = new List<Color>();
-        private void SetupColorList()
-        {
-            PropertyInfo[] pis = typeof(Color).GetProperties();
-            foreach(PropertyInfo pi in pis)
-            {
-                if(pi.PropertyType == typeof(Color))
-                {
-                    colors.Add((Color)pi.GetValue(null));
-                }
-            }
+            Console.WriteLine(SelectedIndex + "     " + ControlFunction.Colors[SelectedIndex]);
+            Global.PropertiesForm.Control.GetType().GetProperty(Property).SetValue(Global.PropertiesForm.Control, ControlFunction.Colors[SelectedIndex]);
         }
 
         private void InitializeComponent()
@@ -82,18 +84,18 @@ namespace DocumentContructor
             this.imageList1.Images.SetKeyName(9, "Blue");
             this.imageList1.Images.SetKeyName(10, "BlueViolet");
             this.imageList1.Images.SetKeyName(11, "Brown");
-            this.imageList1.Images.SetKeyName(12, "CadetBlue");
-            this.imageList1.Images.SetKeyName(13, "Chartreus");
-            this.imageList1.Images.SetKeyName(14, "Chocolate");
-            this.imageList1.Images.SetKeyName(15, "Coral");
-            this.imageList1.Images.SetKeyName(16, "CornflowerBlue");
-            this.imageList1.Images.SetKeyName(17, "Cornsilk");
-            this.imageList1.Images.SetKeyName(18, "Crimson");
-            this.imageList1.Images.SetKeyName(19, "Cyan");
-            this.imageList1.Images.SetKeyName(20, "DarkBlue");
-            this.imageList1.Images.SetKeyName(21, "DarkCyan");
-            this.imageList1.Images.SetKeyName(22, "DarkGoldenrod");
-            this.imageList1.Images.SetKeyName(23, "BurlyWood");
+            this.imageList1.Images.SetKeyName(12, "BurlyWood");
+            this.imageList1.Images.SetKeyName(13, "CadetBlue");
+            this.imageList1.Images.SetKeyName(14, "Chartreuse");
+            this.imageList1.Images.SetKeyName(15, "Chocolate");
+            this.imageList1.Images.SetKeyName(16, "Coral");
+            this.imageList1.Images.SetKeyName(17, "CornflowerBlue");
+            this.imageList1.Images.SetKeyName(18, "Cornsilk");
+            this.imageList1.Images.SetKeyName(19, "Crimson");
+            this.imageList1.Images.SetKeyName(20, "Cyan");
+            this.imageList1.Images.SetKeyName(21, "DarkBlue");
+            this.imageList1.Images.SetKeyName(22, "DarkCyan");
+            this.imageList1.Images.SetKeyName(23, "DarkGoldenrod");
             this.imageList1.Images.SetKeyName(24, "DarkGray");
             this.imageList1.Images.SetKeyName(25, "DarkGreen");
             this.imageList1.Images.SetKeyName(26, "DarkKhaki");
@@ -137,8 +139,8 @@ namespace DocumentContructor
             this.imageList1.Images.SetKeyName(64, "LightCoral");
             this.imageList1.Images.SetKeyName(65, "LightCyan");
             this.imageList1.Images.SetKeyName(66, "LightGoldenrodYellow");
-            this.imageList1.Images.SetKeyName(67, "LightGray");
-            this.imageList1.Images.SetKeyName(68, "LightGreen");
+            this.imageList1.Images.SetKeyName(67, "LightGreen");
+            this.imageList1.Images.SetKeyName(68, "LightGray");
             this.imageList1.Images.SetKeyName(69, "LightPink");
             this.imageList1.Images.SetKeyName(70, "LightSalmon");
             this.imageList1.Images.SetKeyName(71, "LightSeaGreen");
@@ -205,10 +207,10 @@ namespace DocumentContructor
             this.imageList1.Images.SetKeyName(132, "Tomato");
             this.imageList1.Images.SetKeyName(133, "Transparent");
             this.imageList1.Images.SetKeyName(134, "Turquoise");
-            this.imageList1.Images.SetKeyName(135, "Wheat");
-            this.imageList1.Images.SetKeyName(136, "White");
-            this.imageList1.Images.SetKeyName(137, "WhiteSmoke");
-            this.imageList1.Images.SetKeyName(138, "Violet");
+            this.imageList1.Images.SetKeyName(135, "Violet");
+            this.imageList1.Images.SetKeyName(136, "Wheat");
+            this.imageList1.Images.SetKeyName(137, "White");
+            this.imageList1.Images.SetKeyName(138, "WhiteSmoke");
             this.imageList1.Images.SetKeyName(139, "Yellow");
             this.imageList1.Images.SetKeyName(140, "YellowGreen");
             this.ResumeLayout(false);

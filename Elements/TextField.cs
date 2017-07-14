@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Reflection;
 using System.Windows.Forms;
 
-namespace DocumentContructor
+namespace DocumentConstructor
 {
     public class TextField : Label
     {
-        private List<Property> properties;
-        private string text;
-
         public TextField() : base()
         {
             MouseDown += new MouseEventHandler(ControlFunction.MouseDown);
@@ -18,55 +16,33 @@ namespace DocumentContructor
             MouseMove += new MouseEventHandler(ControlFunction.Move);
             Click += new EventHandler(ControlFunction.Click);
             Properties = new List<Property>();
+            Name = "textField" + Global.TextFieldNumber;
             SetProperties();
             Font = new Font("Times New Roman", 12);
         }
 
         private void SetProperties()
         {
+            Properties.Add(new Property("Name", typeof(string), typeof(TextInput)));
             Properties.Add(new Property("Text", typeof(string), typeof(TextInput)));
             Properties.Add(new Property("Font", typeof(string), typeof(SelectBox)));
             Properties.Add(new Property("Fontsize", typeof(string), typeof(TextInput)));
+            Properties.Add(new Property("Bold", typeof(string), typeof(BoolBox)));
+            Properties.Add(new Property("Italic", typeof(string), typeof(BoolBox)));
             Properties.Add(new Property("ForeColor", typeof(string), typeof(SelectColor)));
-        }
-
-        public override string Text
-        {
-            get
-            {
-                return text;
-            }
-            set
-            {
-                text = value;
-            }
+            Properties.Add(new Property("Location", typeof(string), typeof(TextInput)));
         }
 
         public List<Property> Properties
         {
-            get
-            {
-                return properties;
-            }
-            set
-            {
-                properties = value;
-                UpdateProperties();
-            }
+            get;
+            private set;
         }
 
-        private void UpdateProperties()
+        public override Image BackgroundImage
         {
-            foreach (Property p in properties)
-            {
-                switch (p.Name)
-                {
-                    case "Text":
-                        //text = (string)p.Value;
-                        
-                        break;
-                }
-            }
+            get;
+            set;
         }
     }
 }

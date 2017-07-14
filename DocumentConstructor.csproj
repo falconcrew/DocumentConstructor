@@ -50,39 +50,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlFunction.cs" />
-    <Compile Include="DocumentConstructor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DocumentConstructor.Designer.cs">
-      <DependentUpon>DocumentConstructor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Global.cs" />
-    <Compile Include="Line.cs">
+    <Compile Include="Elements\BoolBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="NameLabel.cs">
+    <Compile Include="Classes\ControlFunction.cs" />
+    <Compile Include="GUI\DocumentConstructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DocumentConstructor.Designer.cs">
+      <DependentUpon>DocumentConstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Global.cs" />
+    <Compile Include="Elements\Line.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Elements\NameLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Elements\Picture.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="PropertiesForm.cs">
+    <Compile Include="GUI\PropertiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PropertiesForm.designer.cs">
+    <Compile Include="GUI\PropertiesForm.designer.cs">
       <DependentUpon>PropertiesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Property.cs" />
-    <Compile Include="SelectBox.cs">
+    <Compile Include="Classes\Property.cs" />
+    <Compile Include="Elements\SelectBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SelectColor.cs">
+    <Compile Include="Elements\SelectColor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TextInput.cs">
+    <Compile Include="Elements\TextInput.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TextField.cs">
+    <Compile Include="Elements\TextField.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Toolbox.cs">
@@ -91,10 +97,13 @@
     <Compile Include="Toolbox.Designer.cs">
       <DependentUpon>Toolbox.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DocumentConstructor.resx">
+    <EmbeddedResource Include="GUI\DocumentConstructor.resx">
       <DependentUpon>DocumentConstructor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PropertiesForm.resx">
+    <EmbeddedResource Include="Elements\Line.resx">
+      <DependentUpon>Line.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PropertiesForm.resx">
       <DependentUpon>PropertiesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -105,8 +114,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SelectColor.resx">
+    <EmbeddedResource Include="Elements\SelectColor.resx">
       <DependentUpon>SelectColor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Property.datasource" />
@@ -266,6 +276,7 @@
     <EmbeddedResource Include="Images\Yellow.png" />
     <EmbeddedResource Include="Images\YellowGreen.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

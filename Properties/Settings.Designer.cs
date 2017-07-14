@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DocumentContructor.Properties
+namespace DocumentConstructor.Properties
 {
 
 

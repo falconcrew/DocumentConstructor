@@ -1,4 +1,4 @@
-﻿namespace DocumentContructor
+﻿namespace DocumentConstructor
 {
     partial class Toolbox
     {

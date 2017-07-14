@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DocumentContructor
+namespace DocumentConstructor
 {
     public class SelectBox : ComboBox
     {
@@ -35,12 +35,34 @@ namespace DocumentContructor
 
         }
 
+        public void SetText()
+        {
+            switch (Property)
+            {
+                case "Font":
+                    Font f = (Font)Global.PropertiesForm.Control.GetType().GetProperty(Property).GetValue(Global.PropertiesForm.Control);
+                    Text = f.FontFamily.Name;
+                    break;
+            }
+        }
+
         private void ChangeValue(object sender, EventArgs e)
         {
             switch (Property)
             {
                 case "Font":
-                    Font f = new Font(Text, 12);
+                    Font f = (Font)Global.PropertiesForm.Control.GetType().GetProperty(Property).GetValue(Global.PropertiesForm.Control);
+                    FontStyle fs = FontStyle.Regular;
+                    if (f.Bold)
+                    {
+                        fs |= FontStyle.Bold;
+                    }
+                    if (f.Italic)
+                    {
+                        fs |= FontStyle.Italic;
+                    }
+                    f = new Font(Text, f.Size, fs);
+                    
                     Global.PropertiesForm.Control.GetType().GetProperty(Property).SetValue(Global.PropertiesForm.Control, f);
                     break;
             }

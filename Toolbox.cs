@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DocumentContructor
+namespace DocumentConstructor
 {
     public partial class Toolbox : Form
     {
