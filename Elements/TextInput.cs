@@ -45,7 +45,6 @@ namespace DocumentConstructor
                         }
                         int num = Convert.ToInt32(name.Substring(index + 1));
                         name = name.Substring(0, index+1);
-                        Console.WriteLine(name + "      " + num);
                         switch (name)
                         {
                             case "textField":
@@ -63,14 +62,24 @@ namespace DocumentConstructor
                     case "Angle":
                     case "Length":
                     case "LineWidth":
+                    case "Radius":
+                    case "Height":
+                    case "Width":
+                    case "BorderWidth":
                         int val = int.Parse(Text);
                         Global.PropertiesForm.Control.GetType().GetProperty(Property).SetValue(Global.PropertiesForm.Control, val);
+                        if (Global.PropertiesForm.Control.GetType().Name.Equals("Block"))
+                        {
+                            Block b = (Block)(Global.PropertiesForm.Control);
+                            b.RadiusChecked = false;
+                        }
                         break;
                     default:
                         Global.PropertiesForm.Control.GetType().GetProperty(Property).SetValue(Global.PropertiesForm.Control, Text);
                         break;
                 }
                 e.Handled = true;
+                Global.PropertiesForm.UpdateProperties();
             }
         }
 

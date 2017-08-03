@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,10 +67,13 @@ namespace DocumentConstructor
             switch (Property)
             {
                 case "Bold":
-                    Text = f.Bold.ToString();
+                    SelectedItem = f.Bold;
                     break;
                 case "Italic":
-                    Text = f.Italic.ToString();
+                    SelectedItem = f.Italic;
+                    break;
+                default:
+                    SelectedItem = Global.PropertiesForm.Control.GetType().GetProperty(Property).GetValue(Global.PropertiesForm.Control);
                     break;
             }
         }

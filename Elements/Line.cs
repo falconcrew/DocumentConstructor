@@ -32,6 +32,7 @@ namespace DocumentConstructor
             Properties.Add(new Property("Length", typeof(int), typeof(TextInput)));
             Properties.Add(new Property("LineWidth", typeof(int), typeof(TextInput)));
             Properties.Add(new Property("Angle", typeof(int), typeof(TextInput)));
+            Properties.Add(new Property("Location", typeof(Point), typeof(TextInput)));
         }
 
         private Color color;
@@ -87,7 +88,6 @@ namespace DocumentConstructor
         private void PaintLine(object sender, PaintEventArgs e)
         {
             Graphics gfx = e.Graphics;
-            Brush brush = new SolidBrush(Color);
             
             double angle = (Angle / 180) * Math.PI;
             Point p1, p2;

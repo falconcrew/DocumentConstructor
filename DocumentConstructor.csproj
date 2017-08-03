@@ -7,8 +7,8 @@
     <ProjectGuid>{9AFF9AB8-2BE2-4BF4-9C36-284B99ACDE15}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DocumentContructor</RootNamespace>
-    <AssemblyName>DocumentContructor</AssemblyName>
+    <RootNamespace>DocumentConstructor</RootNamespace>
+    <AssemblyName>DocumentConstructor</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,10 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Elements\Block.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Elements\BoolBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\ControlFunction.cs" />
+    <Compile Include="Elements\Tool.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GUI\DocumentConstructor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,10 +97,10 @@
     <Compile Include="Elements\TextField.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Toolbox.cs">
+    <Compile Include="GUI\Toolbox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Toolbox.Designer.cs">
+    <Compile Include="GUI\Toolbox.Designer.cs">
       <DependentUpon>Toolbox.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="GUI\DocumentConstructor.resx">
@@ -105,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PropertiesForm.resx">
       <DependentUpon>PropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Toolbox.resx">
+      <DependentUpon>Toolbox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -276,7 +285,21 @@
     <EmbeddedResource Include="Images\Yellow.png" />
     <EmbeddedResource Include="Images\YellowGreen.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images\DefaultImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\BlockTool.png" />
+    <EmbeddedResource Include="Images\LineTool.png" />
+    <EmbeddedResource Include="Images\TextTool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\LineCursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\BlockCursor.cur" />
+    <EmbeddedResource Include="Images\TextCursor.cur" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

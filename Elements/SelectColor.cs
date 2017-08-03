@@ -30,10 +30,6 @@ namespace DocumentConstructor
             for (int i = 0; i < imageList1.Images.Count; i++)
             {
                 ImageComboBoxItem item = new ImageComboBoxItem(i, imageList1.Images.Keys[i], 0);
-                if (!imageList1.Images.Keys[i].Equals(ControlFunction.Colors[i].Name))
-                {
-                    Console.WriteLine(imageList1.Images.Keys[i] + "        " + ControlFunction.Colors[i].Name);
-                }
                 Items.Add(item);
             }
         }
@@ -57,7 +53,6 @@ namespace DocumentConstructor
 
         private void ChangeValue(object sender, EventArgs e)
         {
-            Console.WriteLine(SelectedIndex + "     " + ControlFunction.Colors[SelectedIndex]);
             Global.PropertiesForm.Control.GetType().GetProperty(Property).SetValue(Global.PropertiesForm.Control, ControlFunction.Colors[SelectedIndex]);
         }
 
